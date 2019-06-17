@@ -1,0 +1,16 @@
+.reveal pre {
+    width: 100%;
+}
+
+.split-row {
+    display: flex;
+}
+
+.split-col {
+    text-align: left;
+    flex: 1;
+}
+
+#intermediate-vs-terminal-example {
+    margin-top: 15%;
+}

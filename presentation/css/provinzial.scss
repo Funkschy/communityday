@@ -1,0 +1,218 @@
+/**
+ * Provinzial-Theme for reveal.js.
+ *
+ * Copyright (C) 2018 Provinzial Rheinland Versicherung AG http://provinzial.com
+ * Author: Heiko Does, Tobias Wingerter
+ */
+
+// This file has been copied over from
+// ../../bower_components/reveal.js/css/theme/source/black.scss
+// See ../../bower_components/reveal.js/css/theme/README.md
+// for further explanations on how to create a custom reveal.js theme.
+// Default mixins and settings -----------------
+@import "theme/template/mixins";
+@import "theme/template/settings";
+// ---------------------------------------------
+// Include theme-specific fonts
+//@import url(fonts/sparbd-webfont.ttf);
+//@import url(fonts/sparlt-webfont.ttf);
+//@import url(fonts/sparrg_0-webfont.ttf);
+
+$cd-color-one: #005940;
+$cd-color-two: #629957;
+
+$highlight : #FFDD00;
+
+// Override theme settings (see ../../bower_components/reveal.js/css/theme/template/settings.scss)
+$backgroundColor: white; //radial-gradient(circle at 50% 50%, $cd-color-two 0%, $cd-color-one 55%);
+$mainColor: #005940; //#fff;
+$headingColor: #005940;
+
+$mainFontSize: 38px;
+//$mainFont: 'sparkasse-rgregular',
+$mainFont: Helvetica,
+sans-serif;
+$headingFont: 'Source Sans Pro',
+Helvetica,
+sans-serif;
+$headingTextShadow: none;
+$headingLetterSpacing: normal;
+$headingTextTransform: uppercase;
+$headingFontWeight: 600;
+$linkColor: $cd-color-one;
+$linkColorHover: darken($linkColor, 10%);
+$selectionBackgroundColor: lighten( $linkColor, 25%);
+
+$heading1Size: 2.5em;
+$heading2Size: 1.6em;
+$heading3Size: 1.3em;
+$heading4Size: 1.0em;
+
+$facette-center : #005744;
+$facette-front : #00573e;
+$facette-back : #69A82F;
+
+$facette-cutpoint-offset: 97vw;
+$top-offset: 192vh;
+.facette {
+  display: block;
+  margin-top: calc(-100vh + #{$top-offset});
+  margin-left: calc( ( ( 500vw / 2) - #{$facette-cutpoint-offset}) * -1);
+  .facette-part {
+    height: 100vh;
+    position: absolute;
+    width: 500vw;
+    opacity: .8;
+    transform-origin: bottom center;
+    transition: transform ease-out 500ms;
+    backface-visibility: hidden;
+  }
+  .facette-back {
+    transform: rotate(-28.5deg);
+    margin-left: 8vw;
+    background-color: $facette-back;
+  }
+  .facette-center {
+    transform: rotate(-18deg);
+    background-color: $facette-center;
+  }
+  .facette-front {
+    transform: rotate(-4deg);
+    background-color: $facette-front;
+  }
+}
+.pdf-page .slide-background {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  .facette {
+    margin-top: calc(-100% + 167%) !important;
+    margin-left: calc( ( ( 500% / 2) - 97vw) * -1) !important;
+  }
+}
+
+.reveal section img {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.sticker {
+  position: absolute;
+  right: -5%;
+  top: 5%;
+  transform: rotate(20deg);
+
+  width: 150px;
+  height: 150px;
+  box-shadow: rgba(0, 0, 0, 0.7) 6px 5px 34px;
+  background-color: $linkColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+
+  .sticker-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    border: $highlight 6px dashed;
+    font-family: arial;
+    font-size: 0.8em;
+    color: white;
+  }
+}
+
+// tagcloud hide
+[hideonclick] {
+  span {
+    opacity: 1;
+    transition:  opacity 400ms linear;
+  }
+  .hide {
+    opacity: 0;
+  }
+}
+
+.left {
+  float: left;
+}
+.center {
+  alignment: center;
+}
+
+.right {
+  float: right;
+}
+
+a {
+  text-decoration: underline !important;
+}
+
+.reveal .controls{
+  right:initial;
+  left: 100px;
+  color: $mainColor;
+}
+
+.reveal .slide-number{
+  right: initial;
+  left: 8px;
+  color: $cd-color-one;
+  background-color: transparent;
+  font-weight: 600;
+}
+
+.reveal .progress span {
+  background: $highlight !important;
+}
+
+
+.print-pdf iframe,
+.overview iframe {
+  display: none !important;
+}
+
+
+section.has-light-background {
+  &,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #222;
+  }
+}
+
+
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+.reveal section img {
+  padding: 0.7rem;
+  border-width: 1px !important;
+}
+
+.references {
+  width: 100%;
+  text-align: right !important;
+  a {
+    display: block;
+    font-size: 70%;
+  }
+}
+
+// Theme template ------------------------------
+@import "../../node_modules/reveal.js/css/theme/template/theme";
+// ---------------------------------------------
