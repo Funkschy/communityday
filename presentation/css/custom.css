@@ -14,3 +14,35 @@
 #intermediate-vs-terminal-example {
     margin-top: 15%;
 }
+
+.check-table tr {
+    height: 1em;
+}
+
+.check-table td:first-child {
+    white-space: nowrap;
+}
+
+.check-table td {
+    text-align: center;
+    vertical-align: middle;
+    height: inherit;
+}
+
+.check-table img {
+    max-height: 100%;
+    height: auto;
+    object-fit: contain;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#philosophies {
+    text-align: center;
+    column-count: 2;
+}
+
+#philosophies p {
+    display: inline-block;
+    vertical-align: top;
+}

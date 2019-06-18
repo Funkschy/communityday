@@ -27,10 +27,86 @@
 <div class="reveal">
     <div class="slides">
         <section class="title" data-state="title">
-            <h1 style="text-transform: none;">Rust vs Go</h1>
+            <h1 style="text-transform: none;">
+                <img style="height: 1em; vertical-align: middle;" src="img/rust_logo.png" alt="Rust"/>
+                vs
+                <img style="height: 1em; vertical-align: middle;" src="img/go_logo.png" alt="Go"/>
+            </h1>
             <p class="author">
                 <small>Felix Schoeller</small>
             </p>
+        </section>
+        <section id="inhalt">
+            <h2>Inhalt</h2>
+            <div class="ulist">
+                <ul>
+                    <li><p>Similarity</p></li>
+                    <li><p>Philosophy</p></li>
+                    <li><p>Differences</p></li>
+                </ul>
+            </div>
+        </section>
+        <section id="similarity">
+            <h2>Similarity</h2>
+            <table class="check-table">
+                <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Rust</th>
+                    <th>Go</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Type inference</td>
+                    <td><img src="img/check.png" alt="Ja"></td>
+                    <td><img src="img/check.png" alt="Ja"></td>
+                </tr>
+                <tr>
+                    <td>Memory Safe</td>
+                    <td><img src="img/check.png" alt="Ja"></td>
+                    <td><img src="img/check.png" alt="Ja"></td>
+                </tr>
+                <tr>
+                    <td>Concurrent/Parallel</td>
+                    <td><img src="img/check.png" alt="Ja"></td>
+                    <td><img src="img/check.png" alt="Ja"></td>
+                </tr>
+                <tr>
+                    <td>OOP</td>
+                    <td><img src="img/notcheck.png" alt="Ja"></td>
+                    <td><img src="img/notcheck.png" alt="Ja"></td>
+                </tr>
+                <tr>
+                    <td>Elegant</td>
+                    <td><img src="img/check.png" alt="Ja"></td>
+                    <td><img src="img/notcheck.png" alt="Nein"></td>
+                </tr>
+                <tr>
+                    <td>Simple</td>
+                    <td><img src="img/notcheck.png" alt="Nein"></td>
+                    <td><img src="img/check.png" alt="Ja"></td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+        <section id="philosophy">
+            <div id="philosophies">
+                <p class="fragment">
+                    Go is an open source programming language that makes it <span
+                        class="fragment highlight-blue">easy</span> to build
+                    <span class="fragment highlight-blue">simple, reliable</span>, and efficient software.
+                </p>
+                <p class="fragment">
+                    Rust is a <span class="fragment highlight-red">systems programming</span> language that runs
+                    blazingly <span class="fragment highlight-red">fast</span>, prevents <span
+                        class="fragment highlight-red">segfaults</span>, and
+                    guarantees <span class="fragment highlight-red">thread safety</span>.
+                </p>
+            </div>
+        </section>
+        <section>
+
         </section>
         <script>
             window.addEventListener('load', () => {
@@ -40,11 +116,11 @@
                 relevantElements.forEach(e => e.appendChild(footer.cloneNode(true)));
             });
         </script>
-        <facsette class="facette" id="facette">
+        <facette class="facette" id="facette">
             <div class="facette-part facette-back"></div>
             <div class="facette-part facette-center"></div>
             <div class="facette-part facette-front"></div>
-        </facsette>
+        </facette>
     </div>
 </div>
 
@@ -60,7 +136,7 @@
             {src: 'plugin/markdown/marked.js'},
             {src: 'plugin/markdown/markdown.js'},
             {src: 'plugin/notes/notes.js', async: true},
-            { src: 'plugin/highlight/highlight.js', async: true }
+            {src: 'plugin/highlight/highlight.js', async: true}
         ]
     });
 </script>
