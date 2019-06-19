@@ -1,0 +1,6 @@
+[submodule "communityday-rust"]
+	path = communityday-rust
+	url = git@github.com:Funkschy/communityday-rust.git
+[submodule "communityday-go"]
+	path = communityday-go
+	url = git@github.com:Funkschy/communityday-go.git
