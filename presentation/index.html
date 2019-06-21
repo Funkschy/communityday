@@ -36,19 +36,22 @@
                 <small>Felix Schoeller</small>
             </p>
         </section>
-        <section id="inhalt">
-            <h2>Inhalt</h2>
-            <div class="ulist">
-                <ul>
-                    <li><p>Similarity</p></li>
-                    <li><p>Philosophy</p></li>
-                    <li><p>Differences</p></li>
-                </ul>
-            </div>
+        <section id="content">
+            <h2>Content</h2>
+            <ol style="column-count: 2; font-size: 0.8em; line-height: 2">
+                <li>Similarities</li>
+                <li>Philosophies</li>
+                <li>Simple code examples</li>
+                <li>Differences</li>
+                <li>Complex code examples</li>
+                <li>Errors, Ecosystem, Testing</li>
+                <li>Good and bad things</li>
+                <li>Conclusion</li>
+            </ol>
         </section>
         <section id="similarity">
             <h2>Similarity</h2>
-            <table class="check-table">
+            <table id="similarity-table" class="check-table">
                 <thead>
                 <tr>
                     <th>Category</th>
@@ -77,18 +80,11 @@
                     <td><img src="img/notcheck.png" alt="Ja"></td>
                     <td><img src="img/notcheck.png" alt="Ja"></td>
                 </tr>
-                <tr>
-                    <td>Elegant</td>
-                    <td><img src="img/check.png" alt="Ja"></td>
-                    <td><img src="img/notcheck.png" alt="Nein"></td>
-                </tr>
-                <tr>
-                    <td>Simple</td>
-                    <td><img src="img/notcheck.png" alt="Nein"></td>
-                    <td><img src="img/check.png" alt="Ja"></td>
-                </tr>
                 </tbody>
             </table>
+            <p id="but" class="fragment" style="top: 45%; position: absolute; left: 70%; font-size: 2em;">
+                But...
+            </p>
         </section>
         <section id="philosophy">
             <div id="philosophies">
@@ -105,8 +101,63 @@
                 </p>
             </div>
         </section>
-        <section>
-
+        <section id="hello-world">
+            <h2>Hello World example</h2>
+            <div class="ulist">
+                <ul>
+                    <li>
+                        <a href="https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&code=fn%20main()%20%7B%0A%20%20%20%20println!(%22Hello%2C%20world!%22)%3B%0A%7D">
+                            Rust Hello World
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://play.golang.org/p/ZgFR4mUil_g">
+                            Go Hello World
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section id="euclid">
+            <h2>GCD example</h2>
+            <div class="ulist">
+                <ul>
+                    <li>
+                        <a href="https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=ca578436ed9ba2968c958499a31e9fb9">
+                            Rust GCD
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://play.golang.org/p/O0Dy11KWlFy">
+                            Go GCD
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <section id="differences">
+            <h2>Differences</h2>
+            <table class="check-table">
+                <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Rust</th>
+                    <th>Go</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Elegant</td>
+                    <td><img src="img/check.png" alt="Ja"></td>
+                    <td><img src="img/notcheck.png" alt="Nein"></td>
+                </tr>
+                <tr>
+                    <td>Simple</td>
+                    <td><img src="img/notcheck.png" alt="Nein"></td>
+                    <td><img src="img/check.png" alt="Ja"></td>
+                </tr>
+                </tbody>
+            </table>
         </section>
         <script>
             window.addEventListener('load', () => {
@@ -140,5 +191,22 @@
         ]
     });
 </script>
+
+<script>
+    Reveal.addEventListener('fragmentvisible', (fragment) => {
+        if (fragment.fragment.id === 'but') {
+            document.getElementById('similarity-table').style.cssFloat = 'left';
+            fragment.fragment.style.display = '';
+        }
+    });
+
+    Reveal.addEventListener('fragmenthidden', (fragment) => {
+        if (fragment.fragment.id === 'but') {
+            document.getElementById('similarity-table').style.cssFloat = '';
+            fragment.fragment.style.display = 'none';
+        }
+    });
+</script>
+
 </body>
 </html>

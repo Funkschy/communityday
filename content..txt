@@ -1,0 +1,47 @@
+Outline:
+    - Similarity
+    - Philosohpy
+    - simple code example
+    - Differences
+    - complex code example
+
+    - Important, but often ignored aspects:
+        - safety + error handling
+        - ecosystem + dependency management
+        - testing
+
+    - go   good vs bad
+    - rust good vs bad
+    - projects
+    - conclusion
+
+---------------------------------------------
+
+rust:
+good:
+    1 safety + speed (zero cost abstractions)
+    1 error handling
+    2 functional programming
+    2 pattern matching
+    3 macros
+    4 tooling
+    4 error messages
+bad:
+    1 verbose + hard to learn
+    2 too many dependencies
+    3 slow compile times
+    4 lifetime syntax
+
+go:
+good:
+    1 easy + speed
+    2 batteries included
+    3 go routines
+    4 standardized
+    5 readable
+bad:
+    1 generics
+    2 nullpointer
+    3 error handling
+    4 dependency management
+    5 mutability

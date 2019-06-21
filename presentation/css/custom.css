@@ -40,6 +40,7 @@
 #philosophies {
     text-align: center;
     column-count: 2;
+    display: flex;
 }
 
 #philosophies p {
