@@ -40,9 +40,9 @@
             <h2>Content</h2>
             <ol style="column-count: 2; font-size: 0.8em; line-height: 2">
                 <li>Similarities</li>
-                <li>Philosophies</li>
                 <li>Simple code examples</li>
-                <li>Differences</li>
+                <li>Philosophies</li>
+                <li>Use cases</li>
                 <li>Complex code examples</li>
                 <li>Errors, Ecosystem, Testing</li>
                 <li>Good and bad things</li>
@@ -76,30 +76,15 @@
                     <td><img src="img/check.png" alt="Ja"></td>
                 </tr>
                 <tr>
-                    <td>OOP</td>
-                    <td><img src="img/notcheck.png" alt="Ja"></td>
-                    <td><img src="img/notcheck.png" alt="Ja"></td>
+                    <td>Classes</td>
+                    <td><img style="padding-right: 12px !important;" src="img/notcheck.png" alt="Nein"></td>
+                    <td><img style="padding-right: 12px !important;" src="img/notcheck.png" alt="Nein"></td>
                 </tr>
                 </tbody>
             </table>
             <p id="but" class="fragment" style="top: 45%; position: absolute; left: 70%; font-size: 2em;">
                 But...
             </p>
-        </section>
-        <section id="philosophy">
-            <div id="philosophies">
-                <p class="fragment">
-                    Go is an open source programming language that makes it <span
-                        class="fragment highlight-blue">easy</span> to build
-                    <span class="fragment highlight-blue">simple, reliable</span>, and efficient software.
-                </p>
-                <p class="fragment">
-                    Rust is a <span class="fragment highlight-red">systems programming</span> language that runs
-                    blazingly <span class="fragment highlight-red">fast</span>, prevents <span
-                        class="fragment highlight-red">segfaults</span>, and
-                    guarantees <span class="fragment highlight-red">thread safety</span>.
-                </p>
-            </div>
         </section>
         <section id="hello-world">
             <h2>Hello World example</h2>
@@ -135,8 +120,24 @@
                 </ul>
             </div>
         </section>
-        <section id="differences">
-            <h2>Differences</h2>
+        <section id="philosophy">
+            <h2>Philosophies</h2>
+            <div id="philosophies">
+                <p class="fragment">
+                    Go is an open source programming language that makes it <span
+                        class="fragment highlight-blue">easy</span> to build
+                    <span class="fragment highlight-blue">simple, reliable</span>, and efficient software.
+                </p>
+                <p class="fragment">
+                    Rust is a <span class="fragment highlight-red">systems</span> programming language that runs
+                    blazingly <span class="fragment highlight-red">fast</span>, prevents <span
+                        class="fragment highlight-red">segfaults</span>, and
+                    guarantees <span class="fragment highlight-red">thread safety</span>.
+                </p>
+            </div>
+        </section>
+        <section id="use-cases">
+            <h2>Use cases</h2>
             <table class="check-table">
                 <thead>
                 <tr>
@@ -147,17 +148,102 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>Elegant</td>
+                    <td>Command line apps</td>
                     <td><img src="img/check.png" alt="Ja"></td>
-                    <td><img src="img/notcheck.png" alt="Nein"></td>
+                    <td><img src="img/check.png" alt="Ja"></td>
                 </tr>
                 <tr>
-                    <td>Simple</td>
-                    <td><img src="img/notcheck.png" alt="Nein"></td>
+                    <td>Network services</td>
                     <td><img src="img/check.png" alt="Ja"></td>
+                    <td><img src="img/check.png" alt="Ja"></td>
+                </tr>
+                <tr>
+                    <td>Wasm</td>
+                    <td><img src="img/check.png" alt="Ja"></td>
+                    <td><img src="img/check.png" alt="Ja"></td>
+                </tr>
+                <tr>
+                    <td>Embedded programming</td>
+                    <td><img src="img/check.png" alt="Ja"></td>
+                    <td style="padding-left: 12px">?</td>
+                </tr>
+                <tr>
+                    <td>Functional programming</td>
+                    <td><img src="img/check.png" alt="Ja"></td>
+                    <td style="padding-left: 12px">?</td>
+                </tr>
+                <tr>
+                    <td>Systems programming</td>
+                    <td><img src="img/check.png" alt="Ja"></td>
+                    <td><img style="padding-right: 12px !important;" src="img/notcheck.png" alt="Nein"></td>
                 </tr>
                 </tbody>
             </table>
+        </section>
+        <section id="demo">
+            <h1>Demo</h1>
+        </section>
+        <section id="etc">
+            <h2>Errors, Ecosystem, Testing</h2>
+            <section>
+                <h2>Pretty Code</h2>
+                <pre><code class="hljs javascript has-highlights" data-trim data-line-numbers="4,8-11">
+import React, { useState } from 'react';
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;You clicked {count} times&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+        Click me
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+					</code></pre>
+                <p>Code syntax highlighting courtesy of <a
+                        href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+            </section>
+            <section id="go-errors">
+                <h2>Errors in Go</h2>
+            </section>
+            <section id="rust-errors">
+                <h2>Errors in Rust</h2>
+            </section>
+            <section id="go-ecosystem">
+                <h2>Ecosystem in Go</h2>
+            </section>
+            <section id="rust-ecosystem">
+                <h2>Ecosystem in Rust</h2>
+            </section>
+            <section id="go-testing">
+                <h2 style="padding-top: 70pt;">Testing in Go</h2>
+                <section data-markdown>
+                    <section>
+                        <pre><code class="hljs" data-trim data-noescape>
+                    (def lazy-fib
+                      (concat
+                       [0 1]
+                       <mark>((fn rfib [a b]</mark>
+                            (lazy-cons (+ a b) (rfib b (+ a b)))) 0 1)))
+                        </code></pre>
+                    </section>
+                </section>
+            </section>
+            <section id="rust-testing">
+                <h2>Testing in Rust</h2>
+            </section>
+        </section>
+        <section>
+            <h2>Rust, the good and the bad</h2>
+        </section>
+        <section>
+            <h2>Go, the good and the bad</h2>
+        </section>
+        <section>
+            <h2>Conclusion</h2>
         </section>
         <script>
             window.addEventListener('load', () => {
@@ -184,10 +270,20 @@
     // - https://github.com/hakimel/reveal.js#dependencies
     Reveal.initialize({
         dependencies: [
-            {src: 'plugin/markdown/marked.js'},
-            {src: 'plugin/markdown/markdown.js'},
-            {src: 'plugin/notes/notes.js', async: true},
-            {src: 'plugin/highlight/highlight.js', async: true}
+            {
+                src: 'plugin/markdown/marked.js', condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: 'plugin/markdown/markdown.js', condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {src: 'plugin/highlight/highlight.js', async: true},
+            {src: 'plugin/search/search.js', async: true},
+            {src: 'plugin/zoom-js/zoom.js', async: true},
+            {src: 'plugin/notes/notes.js', async: true}
         ]
     });
 </script>

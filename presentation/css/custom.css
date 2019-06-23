@@ -21,10 +21,11 @@
 
 .check-table td:first-child {
     white-space: nowrap;
+    text-align: left !important;
 }
 
 .check-table td {
-    text-align: center;
+    text-align: center !important;
     vertical-align: middle;
     height: inherit;
 }
