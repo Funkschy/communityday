@@ -48,3 +48,8 @@
     display: inline-block;
     vertical-align: top;
 }
+
+.example-code {
+    font-size: 0.8em;
+    line-height: 1.5;
+}

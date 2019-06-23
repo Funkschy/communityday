@@ -39,6 +39,7 @@ good:
     3 go routines
     4 standardized
     5 readable
+    6 embedding
 bad:
     1 generics
     2 nullpointer

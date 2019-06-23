@@ -6,13 +6,15 @@
 
     <title>Rust vs Go</title>
 
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/black.css">
 
-    <!-- Theme used for syntax highlighting of code -->
-    <link rel="stylesheet" href="lib/css/zenburn.css">
     <link rel="stylesheet" href="css/provinzial.css" id="theme">
     <link rel="stylesheet" href="css/custom.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css">
 
     <!-- Printing and PDF exports -->
     <script>
@@ -44,7 +46,7 @@
                 <li>Philosophies</li>
                 <li>Use cases</li>
                 <li>Complex code examples</li>
-                <li>Errors, Ecosystem, Testing</li>
+                <li>Ecosystem, Testing</li>
                 <li>Good and bad things</li>
                 <li>Conclusion</li>
             </ol>
@@ -184,63 +186,139 @@
             <h1>Demo</h1>
         </section>
         <section id="etc">
-            <h2>Errors, Ecosystem, Testing</h2>
-            <section>
-                <h2>Pretty Code</h2>
-                <pre><code class="hljs javascript has-highlights" data-trim data-line-numbers="4,8-11">
-import React, { useState } from 'react';
-
-function Example() {
-  const [count, setCount] = useState(0);
-
-  return (
-    &lt;div&gt;
-      &lt;p&gt;You clicked {count} times&lt;/p&gt;
-      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
-        Click me
-      &lt;/button&gt;
-    &lt;/div&gt;
-  );
-}
-					</code></pre>
-                <p>Code syntax highlighting courtesy of <a
-                        href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-            </section>
-            <section id="go-errors">
-                <h2>Errors in Go</h2>
-            </section>
-            <section id="rust-errors">
-                <h2>Errors in Rust</h2>
-            </section>
+            <h2>Ecosystem and Testing</h2>
             <section id="go-ecosystem">
                 <h2>Ecosystem in Go</h2>
+                <div class="ulist">
+                    <ul>
+                        <li><p>Fragmented dependency management: <br/>go get, dep, vgo</p></li>
+                        <li><p>Batteries included standard library</p></li>
+                        <li><p>Lots of nice web frameworks</p></li>
+                        <li><p>GoLand</p></li>
+                    </ul>
+                </div>
             </section>
             <section id="rust-ecosystem">
                 <h2>Ecosystem in Rust</h2>
+                <div class="ulist">
+                    <ul>
+                        <li><p>Cargo: All in one</p></li>
+                        <li><p>Centralized dependency management: <a href="https://crates.io/">Crates</a></p></li>
+                        <li><p>Dependencies are needed</p></li>
+                        <li><p>Great libraries for most use cases, but often still in development</p></li>
+                        <li><p>Only Plugins</p></li>
+                    </ul>
+                </div>
             </section>
             <section id="go-testing">
-                <h2 style="padding-top: 70pt;">Testing in Go</h2>
-                <section data-markdown>
-                    <section>
-                        <pre><code class="hljs" data-trim data-noescape>
-                    (def lazy-fib
-                      (concat
-                       [0 1]
-                       <mark>((fn rfib [a b]</mark>
-                            (lazy-cons (+ a b) (rfib b (+ a b)))) 0 1)))
-                        </code></pre>
-                    </section>
-                </section>
+                <h2>Testing in Go</h2>
+                <pre><code class="hljs go has-highlights example-code" data-trim data-line-numbers>
+                    func TestFetchLinks(t *testing.T) {
+                        html := "&lthtml&gt&ltbody&gt&lta href=\"http://test.com\"/&gt&lta href=\"http://provinzial.com\"/&gt&lt/body&gt&lt/html&gt"
+                        links, err := FetchLinks(strings.NewReader(html))
+                        if err != nil {
+                            t.Error("Konnte keine Links fetchen")
+                            return
+                        }
+
+                        expected := []string{"http://test.com", "http://provinzial.com"}
+                        if len(links) != len(expected) {
+                            t.Errorf("falsche Link Anzahl: Erwartet: %d, aber war: %d", len(expected), len(links))
+                            return
+                        }
+
+                        for i := 0; i < len(expected); i++ {
+                            if links[i] != expected[i] {
+                                t.Errorf("Link sollte %s sein, aber war %s", expected[i], links[i])
+                            }
+                        }
+                    }
+                </code></pre>
             </section>
             <section id="rust-testing">
                 <h2>Testing in Rust</h2>
+                <pre><code class="hljs rust has-highlights example-code" data-trim data-line-numbers>
+                    #[cfg(test)]
+                    mod tests {
+                        use super::*;
+
+                        #[test]
+                        fn test_fetch_links() {
+                            let html = r#"
+                                &lthtml&gt
+                                &ltbody&gt
+                                    &lta href="http://test.com"/&gt
+                                    &lta href="http://provinzial.com"/&gt
+                                &lt/body&gt
+                                &lt/html&gt"#;
+
+                            let links = LinkFinder::get_links("".to_owned(), html).collect_links();
+                            assert_eq!(
+                                vec![
+                                    Url::parse("http://test.com").unwrap(),
+                                    Url::parse("http://provinzial.com").unwrap()
+                                ],
+                                links
+                            );
+                        }
+                    }
+                </code></pre>
             </section>
         </section>
         <section>
             <h2>Rust, the good and the bad</h2>
+            <section id="rust-good">
+                <h3>Good</h3>
+                <div class="ulist">
+                    <ul>
+                        <li><p>Safety + speed (zero cost abstractions)</p></li>
+                        <li><p>Error handling</p></li>
+                        <li><p>Functional programming</p></li>
+                        <li><p>Pattern matching + Macros</p></li>
+                        <li><p>Tooling</p></li>
+                        <li><p>Compiler error messages</p></li>
+                    </ul>
+                </div>
+            </section>
+            <section id="rust-bad">
+                <h3>Bad</h3>
+                <div class="ulist">
+                    <ul>
+                        <li><p>Verbose + hard to learn</p></li>
+                        <li><p>Too many dependencies</p></li>
+                        <li><p>Slow compile times</p></li>
+                        <li><p>Lifetime syntax</p></li>
+                    </ul>
+                </div>
+            </section>
         </section>
         <section>
             <h2>Go, the good and the bad</h2>
+            <section id="go-good">
+                <h3>Good</h3>
+                <div class="ulist">
+                    <ul>
+                        <li><p>Easy to use and still efficient</p></li>
+                        <li><p>Batteries included</p></li>
+                        <li><p>Go routines</p></li>
+                        <li><p>Standardized syntax</p></li>
+                        <li><p>Readable code</p></li>
+                        <li><p>Struct embedding</p></li>
+                    </ul>
+                </div>
+            </section>
+            <section id="go-bad">
+                <h3>Bad</h3>
+                <div class="ulist">
+                    <ul>
+                        <li><p>Lack of generics</p></li>
+                        <li><p>Nullpointer</p></li>
+                        <li><p>Error handling</p></li>
+                        <li><p>Dependency management</p></li>
+                        <li><p>Mutability</p></li>
+                    </ul>
+                </div>
+            </section>
         </section>
         <section>
             <h2>Conclusion</h2>
@@ -261,7 +339,6 @@ function Example() {
     </div>
 </div>
 
-<script src="lib/js/head.min.js"></script>
 <script src="js/reveal.js"></script>
 
 <script>
@@ -270,26 +347,16 @@ function Example() {
     // - https://github.com/hakimel/reveal.js#dependencies
     Reveal.initialize({
         dependencies: [
-            {
-                src: 'plugin/markdown/marked.js', condition: function () {
-                    return !!document.querySelector('[data-markdown]');
-                }
-            },
-            {
-                src: 'plugin/markdown/markdown.js', condition: function () {
-                    return !!document.querySelector('[data-markdown]');
-                }
-            },
-            {src: 'plugin/highlight/highlight.js', async: true},
-            {src: 'plugin/search/search.js', async: true},
-            {src: 'plugin/zoom-js/zoom.js', async: true},
-            {src: 'plugin/notes/notes.js', async: true}
+            {src: 'plugin/markdown/marked.js'},
+            {src: 'plugin/markdown/markdown.js'},
+            {src: 'plugin/notes/notes.js', async: true},
+            {src: 'plugin/highlight/highlight.js', async: true}
         ]
     });
 </script>
 
 <script>
-    Reveal.addEventListener('fragmentvisible', (fragment) => {
+    Reveal.addEventListener('fragmentshown', (fragment) => {
         if (fragment.fragment.id === 'but') {
             document.getElementById('similarity-table').style.cssFloat = 'left';
             fragment.fragment.style.display = '';
