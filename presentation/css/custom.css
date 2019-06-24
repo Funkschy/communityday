@@ -41,6 +41,7 @@
 #philosophies {
     text-align: center;
     column-count: 2;
+    column-gap: 50pt;
     display: flex;
 }
 
