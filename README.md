@@ -1,6 +1,8 @@
 # Communityday presentation 25.06.2019
 
-Use ```$ git clone --recurse-submodules https://github.com/Funkschy/communityday/``` to get started
+This is the main repository for a presentation in our internal community event.
+Don't expect any further updates.
+Use ```$ git clone --recurse-submodules https://github.com/provinzial-rheinland/Communityday-2019-06-RustvsGo``` to get started
 
 To run the Rust example, you just go into the directory and run ```cargo run -- --url <URL>```
 
